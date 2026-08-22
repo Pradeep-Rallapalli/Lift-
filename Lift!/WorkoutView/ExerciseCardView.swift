@@ -16,7 +16,9 @@ struct ExerciseCardView: View {
                 .font(.title2)
             Text("Sets: \(exercise.sets)")
             Text("Reps: \(exercise.reps)")
-            Text("Max Weight: \(exercise.weight)")
+            Text(String(format: "Max Weight %.2f LB", exercise.weight))
+            Text("Rest time: \(exercise.restTime) seconds")
+         
 
         }
         .padding()

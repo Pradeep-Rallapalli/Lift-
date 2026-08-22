@@ -15,6 +15,7 @@ struct WorkoutCardView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(workoutPlan.planName)
+                
                 Spacer()
                 Image(systemName: "play.circle")
             }.font(.title).bold().padding()

@@ -23,12 +23,23 @@ struct HomeScreen: View {
                                 WorkoutDetailView(workoutPlan: workoutPlan)
                             } label: {
                                 WorkoutCardView(workoutPlan: workoutPlan)
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(.foreground)
                             }
                         }
                     }
                 }
             }.navigationTitle("Start Lift!")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing){
+                        NavigationLink {
+                            AddWorkoutView()
+                        } label: {
+                            Image(systemName: "plus")
+                                
+                        }
+                    }
+                    
+                }
         }
     }
 }
