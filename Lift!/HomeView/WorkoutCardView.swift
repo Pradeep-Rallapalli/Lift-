@@ -20,7 +20,7 @@ struct WorkoutCardView: View {
             }.font(.title).bold().padding()
         }
         .padding()
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding()

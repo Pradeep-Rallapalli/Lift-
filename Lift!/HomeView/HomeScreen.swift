@@ -19,7 +19,12 @@ struct HomeScreen: View {
                             .padding()
                     } else {
                         ForEach(workoutPlans) {workoutPlan in
-                            WorkoutCardView(workoutPlan: workoutPlan)
+                            NavigationLink {
+                                WorkoutDetailView(workoutPlan: workoutPlan)
+                            } label: {
+                                WorkoutCardView(workoutPlan: workoutPlan)
+                                    .foregroundStyle(Color.black)
+                            }
                         }
                     }
                 }
