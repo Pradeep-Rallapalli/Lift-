@@ -10,6 +10,8 @@ import SwiftData
 
 struct HomeScreen: View {
     @Query var workoutPlans: [WorkoutPlan]
+    @State var isShowingEditSheet = false
+    @State var workoutPlanToEdit: WorkoutPlan?
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -24,6 +26,21 @@ struct HomeScreen: View {
                             } label: {
                                 WorkoutCardView(workoutPlan: workoutPlan)
                                     .foregroundStyle(.foreground)
+                                    .contextMenu {
+                                        Button {
+                                            workoutPlanToEdit = workoutPlan
+                                        } label: {
+                                            Image(systemName: "pencil")
+                                            Text("Edit")
+                                        }
+                                        
+                                        Button(role: .destructive) {
+                                            
+                                        } label: {
+                                            Image(systemName: "trash")
+                                            Text("Delete")
+                                        }
+                                    }
                             }
                         }
                     }
@@ -40,6 +57,9 @@ struct HomeScreen: View {
                     }
                     
                 }
+        }.sheet(item: $workoutPlanToEdit) { workout in
+            NameEditSheetView(workoutPlan: workout)
+                .presentationDetents([.height(180)])
         }
     }
 }
