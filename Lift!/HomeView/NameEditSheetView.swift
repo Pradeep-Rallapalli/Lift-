@@ -39,12 +39,16 @@ struct NameEditSheetView: View {
                 
                 ToolbarItem(){
                     Button() {
-                        workoutPlan.planName = planName
-                        dismiss()
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Failed to save: \(error)")
+                        if(planName.isEmpty) {
+                            dismiss()
+                        } else {
+                            workoutPlan.planName = planName
+                            dismiss()
+                            do {
+                                try context.save()
+                            } catch {
+                                print("Failed to save: \(error)")
+                            }
                         }
                     } label: {
                         Text("Confirm")
