@@ -49,7 +49,7 @@ struct AddWorkoutView: View {
                 
             }
             .sheet(isPresented: $isShowingAddExerciseSheet) {
-                ExerciseSheetView(exercises: $exercises)
+                addExerciseSheetView(exercises: $exercises)
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {

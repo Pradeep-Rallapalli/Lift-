@@ -8,14 +8,14 @@
 import SwiftUI
 
 
-struct ExerciseSheetView: View {
+struct addExerciseSheetView: View {
     @Binding var exercises: [Exercise]
     
-    @State var exerciseName = ""
-    @State var sets = 0
-    @State var reps = 0
-    @State var weight =  0.0
-    @State var restTime = "1:40"
+    @State private var exerciseName = ""
+    @State private var sets = 0
+    @State private var reps = 0
+    @State private var weight =  0.0
+    @State private var restTime = "1:40"
     
     @Environment(\.dismiss) private var dismiss
 

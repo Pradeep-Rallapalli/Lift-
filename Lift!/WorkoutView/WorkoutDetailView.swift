@@ -11,14 +11,29 @@ import SwiftData
 struct WorkoutDetailView: View {
     
     let workoutPlan: WorkoutPlan
-
+    @State var exerciseToEdit: Exercise?
+    @Environment(\.modelContext) var context
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
                     VStack {
                         ForEach(workoutPlan.exercises) { exercise in
-                            ExerciseCardView(exercise: exercise)
+                            ExerciseCardView(exercise: exercise).contextMenu {
+                                Button {
+                                    exerciseToEdit = exercise
+                                } label: {
+                                    Image(systemName: "pencil")
+                                    Text("Edit")
+                                }
+                                
+                                Button(role: .destructive) {
+                                    context.delete(exercise)
+                                } label: {
+                                    Image(systemName: "trash")
+                                    Text("Delete")
+                                }
+                            }
                         }
                     }
                 }
@@ -35,7 +50,11 @@ struct WorkoutDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .padding()
                 
-            }.navigationTitle(workoutPlan.planName).toolbarTitleDisplayMode(.inline)
+            }
+            .sheet(item: $exerciseToEdit) { exercise in
+                editExerciseSheetView(exerciseToEdit: exercise)
+            }
+            .navigationTitle(workoutPlan.planName).toolbarTitleDisplayMode(.inline)
         }
     }
 }
