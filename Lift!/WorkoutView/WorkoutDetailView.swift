@@ -10,7 +10,7 @@ import SwiftData
 
 struct WorkoutDetailView: View {
     
-    let workoutPlan: WorkoutPlan
+    @Bindable var workoutPlan: WorkoutPlan
     @State var exerciseToEdit: Exercise?
     @Environment(\.modelContext) var context
     var body: some View {
@@ -38,8 +38,8 @@ struct WorkoutDetailView: View {
                     }
                 }
                 
-                Button {
-                    //TODO: Start workout session
+                NavigationLink {
+                    WorkoutSessionView(workoutPlan: workoutPlan)
                     
                 } label: {
                         Text("Start Workout")

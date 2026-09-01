@@ -19,14 +19,20 @@ struct WorkoutSessionView: View {
     @Bindable var workoutPlan: WorkoutPlan
     @State private var index = 0
     var body: some View {
-        
-        switch phase {
-        case .workingOut:
-            ExerciseSessionView(exercise: workoutPlan.exercises[index], exerciseIndex: $index)
-        case .resting:
-            RestingSessionView()
-        case .isFinished:
-            Text("Done")
+        NavigationStack {
+            switch phase {
+            case .workingOut:
+                ExerciseSessionView(state: $phase,planName: workoutPlan.planName, exercises: $workoutPlan.exercises)
+            case .resting:
+                RestingSessionView()
+            case .isFinished:
+                Text("Done")
+                NavigationLink {
+                    HomeScreen()
+                } label: {
+                    Text("Home")
+                }
+            }
         }
     }
 }

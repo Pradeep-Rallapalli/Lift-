@@ -12,7 +12,7 @@ import SwiftData
 enum PreviewData {
     // MARK: - Sample Exercises
     static let sampleExercisesA: [Exercise] = [
-        Exercise(name: "Back Squat", sets: 5, reps: 5, weight: 225, restTime: 180),
+        Exercise(name: "Back Squat", sets: 5, reps: 5, weight: 180, restTime: 180),
         Exercise(name: "Bench Press", sets: 5, reps: 5, weight: 185, restTime: 150),
         Exercise(name: "Barbell Row", sets: 5, reps: 5, weight: 155, restTime: 150)
     ]
