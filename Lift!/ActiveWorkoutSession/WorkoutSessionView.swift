@@ -15,9 +15,11 @@ enum workoutPhase {
 
 struct WorkoutSessionView: View {
     
-    @State private var phase = workoutPhase.workingOut
+    @State private var phase = workoutPhase.isFinished
     @Bindable var workoutPlan: WorkoutPlan
     @State private var index = 0
+    @State private var workoutFinished = false
+    @Environment (\.modelContext) private var context
     var body: some View {
         NavigationStack {
             switch phase {
@@ -26,12 +28,8 @@ struct WorkoutSessionView: View {
             case .resting:
                 RestingSessionView()
             case .isFinished:
-                Text("Done")
-                NavigationLink {
-                    HomeScreen()
-                } label: {
-                    Text("Home")
-                }
+                var workoutLog = WorkoutLog(date: Date(), workoutsFinished: [workoutPlan])
+                context.insert(workoutLog)
             }
         }
     }

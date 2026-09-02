@@ -25,7 +25,7 @@ struct ExerciseSessionView: View {
                 
                 ScrollView {
                     ForEach(0..<exercises[exerciseIndex].sets, id: \.self) {set in
-                        SetView(setName: set, reps: exercises[exerciseIndex].reps, weight: $exercises[exerciseIndex].weight)
+                        SetView(setName: set, reps: exercises[exerciseIndex].reps, weight: $exercises[exerciseIndex].weight).id("\(exerciseIndex) - \(set)")
                     }
                 }
                 
@@ -33,7 +33,11 @@ struct ExerciseSessionView: View {
                 
                 Button {
                
-                    state = workoutPhase.isFinished
+                    if(exerciseIndex < exercises.count - 1) {
+                        exerciseIndex += 1
+                    } else {
+                        state = workoutPhase.isFinished
+                    }
                     
                     
                 } label: {

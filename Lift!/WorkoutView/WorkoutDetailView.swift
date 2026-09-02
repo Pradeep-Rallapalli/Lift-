@@ -42,13 +42,13 @@ struct WorkoutDetailView: View {
                     WorkoutSessionView(workoutPlan: workoutPlan)
                     
                 } label: {
-                        Text("Start Workout")
+                    Text("Start Workout")
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
                 }
                 .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .padding()
+                .buttonStyle(.borderedProminent)
+                .buttonSizing(.flexible)
                 
             }
             .sheet(item: $exerciseToEdit) { exercise in
